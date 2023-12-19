@@ -1,7 +1,7 @@
 version: "3.7"
 
 services:
-  httpd:
+  apache2:
     image: ubuntu/apache2:2.4-22.04_beta
     container_name: con_apache2
     restart: unless-stopped

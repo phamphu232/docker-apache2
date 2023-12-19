@@ -1,7 +1,7 @@
 version: "3.7"
 
 services:
-  nginx:
+  httpd:
     image: ubuntu/apache2:2.4-22.04_beta
     container_name: con_apache2
     restart: unless-stopped
@@ -9,6 +9,7 @@ services:
       - "8080:80"
       - "8443:443"
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - ./www:/var/www
       - ./log/apache2:/var/log/apache2
     working_dir: /var/www
@@ -17,6 +18,7 @@ services:
     container_name: con_php73
     restart: unless-stopped
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - ./www:/var/www
       - ./php7.3/php.ini:/usr/local/etc/php/php.ini
     working_dir: /var/www
